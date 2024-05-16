@@ -1,0 +1,15 @@
+#BSUB -J myarray[1-10]
+#BSUB -W 10:00
+#BSUB -o /.../.../.../.../.../.../sim.out
+#BSUB -e /.../.../.../.../.../.../sim.err
+#BSUB -cwd /.../.../.../.../.../...
+#BSUB -q medium
+#BSUB -u ...
+#BSUB -n 1
+#BSUB -M 8
+#BSUB -R rusage[mem=8]
+
+module load R/4.3.1
+
+Rscript sim.r --h2_e 0.05 --h2_p 0.1 --causal 20 --name_batch sim1 --gene VIM --seed $LSB_JOBINDEX --runs_association 10
+ > /.../.../.../.../.../.../sim.out
