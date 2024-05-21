@@ -145,74 +145,6 @@ qqunif.plot <- function(pvalues,
           )
 }
 
-
-# wd = "/Users/jliu28/Dropbox/MDACC_research/Undergoing/scTWAS/shared/simulations2/"
-# temp <- fread(paste0(wd, "map_file.csv"), data.table = FALSE)
-# 
-# p1 = NULL
-# p2 = NULL
-# p3 = NULL
-# p4 = NULL
-# p5 = NULL
-# 
-# for(i in 1:nrow(temp)) {
-#     tryCatch({
-#         setwd(paste0(wd,temp$name_batch[i]))
-#     
-#     files <- dir()
-#     files <- files[grepl("-",files)]
-#     
-#     p1.tmp = NULL
-#     p2.tmp = NULL
-#     p3.tmp = NULL
-#     p4.tmp = NULL
-#     p5.tmp = NULL
-#     
-#     for (j in 1:length(files)) {
-#         n <- files[j] %>% gsub(".RData", "", .) %>% str_split(., "-") %>% unlist()
-#         n <- n[2]
-#         
-#         load(files[j])
-#         
-#         if(n == "50") {
-#             p1.tmp = c(p1.tmp,p.t1e[1,])
-#         } else if (n == "100") {
-#             p2.tmp = c(p2.tmp,p.t1e[1,])
-# 
-#         } else if (n == "200") {
-#             p3.tmp = c(p3.tmp,p.t1e[1,])
-# 
-#         } else if (n == "500") {
-#             p4.tmp = c(p4.tmp,p.t1e[1,])
-# 
-#         } else {
-#             p5.tmp = c(p5.tmp,p.t1e[1,])
-#             if(sum(p.t1e[1,]<1e-3)>2) {
-#                 cat("out\n")
-#                 #stop()
-#             }
-#         }
-#     }
-#     
-#     p1 = c(p1, p1.tmp)
-#     p2 = c(p2, p2.tmp)
-#     p3 = c(p3, p3.tmp)
-#     p4 = c(p4, p4.tmp)
-#     p5 = c(p5, p5.tmp)
-#    
-#    cat("finisih ",i, "  ", sum(p1.tmp<0.05),"\n")
-#    cat("finisih ",i, "  ", sum(p5.tmp<0.05),"\n")
-# 
-#     }, error=function(e){})
-#    
-# }
-# 
-# p1 = p1[!is.na(p1)]
-# p2 = p2[!is.na(p2)]
-# p3 = p3[!is.na(p3)]
-# p4 = p4[!is.na(p4)]
-# p5 = p5[!is.na(p5)]
-
 # Set the working directory to the folder containing the .RData files
 setwd("")
 file_names <- dir(pattern = "\\.RData$")
@@ -230,20 +162,6 @@ for(file in 2:length(file_names)) {
 combined_data <- combined_data[, !apply(is.na(combined_data), 2, any)]
 
 # Your combined data is now in 'combined_data'
-
-# my.pvalue.list <- list("old" = combined_data[1, ], "data-driven" = combined_data[2, ], "true h2" = combined_data[3, ],
-#                        "true var" = combined_data[4, ], "non-zero data-driven" = combined_data[5, ],
-#                        "non-zero true h2" = combined_data[6, ], "non-zero true var" = combined_data[7, ])
-# my.pvalue.list <- list("old" = combined_data[1, ], "data-driven" = combined_data[2, ], "true h2" = combined_data[3, ],
-#                        "non-zero data-driven" = combined_data[4, ],
-#                        "non-zero true h2" = combined_data[5, ])
-# my.pvalue.list <- list("old" = combined_data[1, ], "data-driven" = combined_data[2, ], "true h2" = combined_data[3, ],
-#                        "true var" = combined_data[4, ], "individual all SNPs" = combined_data[5, ],
-#                        "individual valid SNPs" = combined_data[6, ])
-# my.pvalue.list <- list("data-driven" = combined_data[2, ], "true h2" = combined_data[3, ],
-#                        "individual all SNPs" = combined_data[5, ],
-#                        "individual valid SNPs" = combined_data[6, ])
-# my.pvalue.list <- list("Summary" = combined_data[1, ], "Individual" = combined_data[2, ])
 my.pvalue.list <- list("2SLS" = combined_data[1, ], "Oracle" = combined_data[2, ],
                        "2SLS-Corrected" = combined_data[3, ])
 
