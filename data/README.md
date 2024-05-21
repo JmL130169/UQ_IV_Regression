@@ -1,0 +1,1 @@
+This direction contains simulation results for all 10 scenarios described in the main paper. For each result, the first number in its name represents expression heritability, while the second number in its name represents phenotypic heritability. For example, "data_05_01" is the case where $h_{2}^{e} = 0.05$ and $h_{2}^{p} = 0.01$.
