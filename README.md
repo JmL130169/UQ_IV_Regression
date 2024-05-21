@@ -9,4 +9,4 @@ In the direction "code", we have:
 * "bias_coverage_gwas.R" is the code to generate MAB, MSE and coverage probability plots.
 * "Fig2c_qq_plot_type1.R" is the code to generate QQ-plot.
 
-In the direction "data", we have the data of simulation results for each of 10 scenarios described in the main paper. As for the data we used in this work, it is from UK Biobank dataset, and the individual data can be accessed from the UK Biobank study at https://www.ukbiobank.ac.uk.
+In the direction "data", we have the data of simulation results for each of 10 scenarios described in the main paper. As for the data we used in this work, it is from UK Biobank dataset. The individual data can be accessed from the UK Biobank study at https://www.ukbiobank.ac.uk.
